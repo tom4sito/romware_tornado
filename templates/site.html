@@ -1,0 +1,1105 @@
+{% macro sr10(num) -%}
+	<div class="sr10-container" addc-sr10-idx="{{num - 1}}">
+		<div class="sr10-inner-container">
+			{% for n in range(10,0,-1) %}
+				<div class="slot-row">
+					<div class="slot" sr10-idx="{{num - 1}}" slot-num="{{n}}">
+						{{((10 * num) + (n - 1))}}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{%- endmacro %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+	<title>ADDC ROMwarePlus</title>	
+
+	<meta name="keywords" content="Arnouse Digital Devices, Corp." />
+	<meta name="description" content="Arnouse Digital Devices, Corp. -- ADDC ROMwarePlus">
+	<meta name="author" content="ADDC.net">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap-toggle.min.css">
+	<link rel="stylesheet" href="static/css/animate.min.css">
+	<link rel="stylesheet" href="static/css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/index7.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,900" rel="stylesheet">
+	<!--<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700,600' rel='stylesheet' type='text/css'>-->
+	<!-- <link rel="stylesheet" href="/css/blob.css"> -->
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="main">
+<div id="content">
+	<div class="resources-wrapper row" id="all-pool-view">
+		<div class="page-title">Dashboard</div>
+		<div class="col-md-4 cols-base">
+			<div class="row">
+				<div class="col-sm-10 pools-header">POOLS</div>
+				<div class="col-sm-2 add-pool-btn">
+					<a href="#about"  class="pool-view-add-pool"><span class="fa fa-plus-square"></span></a>
+				</div>
+			</div>
+			<div id="all-pool-view-content" class="row pools-row rel clear">
+				
+			</div>
+		</div>
+
+
+		<div class="col-md-4 cols-base">
+			<div class="row">
+				<div class="col-sm-10 chassis-header">CHASSIS</div>
+				<div class="col-sm-2 add-chassis-btn">
+					<a href="#about"  class="pool-view-add-chassis"><span class="fa fa-plus-square"></span></a>
+				</div>
+			</div>
+			<div id="all-chassis-view-content" class="row chassis-row rel clear">
+				
+			</div>
+		</div>
+
+
+		<div class="col-md-4 cols-base history-container" id="history-container">
+			<div class="title history-header">Action History</div>
+			<div class="history clear float-left full-width"></div>
+		</div>
+	
+	</div>
+
+	<div id="one-pool-view" class="no-display">
+		<div class="one-pool-view-header row">
+			<table>
+				<tr>
+					<td>
+						<div class="back-btn green-btns one-pool-view-back">
+							<a href="#" class="one-pool-view-back"><span class="fa fa-chevron-left"></span>&nbsp; BACK</a>
+						</div>
+					</td>
+					<td>
+						<a href="#" class="delete-pool">
+							<div class="pool-edit-icons edit-trash">
+								<div class="edit-icon">
+									<span class="glyphicon glyphicon-trash "></span>
+								</div>
+								<div>Delete</div>
+							</div>
+						</a>
+					</td>
+					<td>
+						<a href="#" class="one-pool-view-add-os">
+							<div class="pool-edit-icons edit-os">
+								<div class="edit-icon">
+									<span class="glyphicon glyphicon-hdd "></span>
+								</div>
+								<div>Add OS</div>
+							</div>
+						</a>
+					</td>
+					<td>
+						<a href="#" class="one-pool-view-add-slots">
+							<div class="pool-edit-icons edit-asset">
+								<div class="edit-icon">
+									<span class="glyphicon glyphicon-pencil "></span>
+								</div>
+								<div>Edit Asset</div>
+							</div>		
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="info-box-his-cont row">
+			<div class="col-md-6 info-box-cont">
+				<div class="row pool-stats-cont">
+					<div class="pool-info row">	</div>
+				</div>
+				<div class="row hyp-cont">
+					<div class="row boxes-containers">
+						<div class="hypervisors-panel col-md-6 col-sm-6">
+							<a class="boxes-titles" data-toggle="collapse" href="#hypervisors" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    Hypervisor Slots - 
+							</a>
+							<button type="button" class="btn green_btns add-vm-to-pool">Add VM</button>
+							<span class="hyper-arrow-down-btn glyphicon glyphicon-chevron-down" data-toggle="collapse" href="#hypervisors" role="button" aria-expanded="false" aria-controls="collapseExample"></span>
+							<div class="collapse hypervisors row" id="hypervisors">
+
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row dedi-cont">
+					<div class="row boxes-containers">
+						<div class="dedicated-panel col-md-6 col-sm-6">
+							<a class="boxes-titles" data-toggle="collapse" href="#dedicated-servers" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    Dedicated Server Slots
+							</a>
+							<span class="dedicated-arrow-down-btn glyphicon glyphicon-chevron-down" data-toggle="collapse" href="#dedicated-servers" role="button" aria-expanded="false" aria-controls="collapseExample"></span>
+							<div class="collapse dedicated-servers" id="dedicated-servers"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row unallo-cont">
+					<div class="row boxes-containers">
+						<div class="unallocated-panel col-md-6 col-sm-6">
+							<a class="boxes-titles" data-toggle="collapse" href="#unallocated-servers" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    Unallocated Server Slots
+							</a>
+							<span class="hyper-arrow-down-btn glyphicon glyphicon-chevron-down" data-toggle="collapse" href="#unallocated-servers" role="button" aria-expanded="false" aria-controls="collapseExample"></span>
+							<div class="collapse unallocated-servers" id="unallocated-servers"></div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-md-6 history-panel-container" >
+				<div class="cols-base history-container-2" id="history-container">
+					<div class="title history-header">Action History</div>
+					<div class="history clear float-left full-width"></div>
+				</div>
+			</div>
+
+			
+		</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+<div class="deploy modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Deploy a Machine</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width" style="table-layout:fixed;">
+							  <tbody>
+								<tr>
+									<td>
+										<label>Select an OS:</label>
+									</td>
+									<td>
+										<select class="profile-select form-control">
+											<option value="-1">Please select a Profile</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label>Network Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="nic0-ip form-control" value="" placeholder="IP in Range: 10.0.0.0/8" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<button class="deploy-system-btn btn btn-block btn-info mt-lg" style="font-size:18px;" type="button">DEPLOY SYSTEM</button>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="deploy-vm modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Deploy a VM</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width" style="table-layout:fixed;">
+							  <tbody>
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">New VM or From Backup?</label>
+									</td>
+									<td>
+										<label class="radio-inline deploy-vm-radio"><input type="radio" name="vm-type" class="new-vm" checked />New VM</label>
+										<label class="radio-inline deploy-vm-radio"><input type="radio" name="vm-type" class="backup-vm" />From Backup</label>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">Select an OS:</label>
+									</td>
+									<td>
+										<select class="vm-os-select form-control">
+											<option value="-1">Please select an OS</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">CPU Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="vm-cpu-input form-control" value="" placeholder="Number of CPUs [1-4]" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">Memory Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="vm-ram-input form-control" value="" placeholder="Amount of RAM in GBs" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">Storage Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="vm-ssd-input form-control" value="" placeholder="Size of Disk in GBs" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-vm-info-label">Network Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="vm-ip-input form-control" value="" placeholder="IP in Range: 10.0.0.0/8" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<button class="deploy-vm-system-btn btn btn-block btn-info mt-lg" type="button">DEPLOY VM</button>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="deploy-slot modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content deploy-modal-width">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Deploy a Slot</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width" style="table-layout:fixed;">
+							  <tbody>
+								<tr>
+									<td align="right">
+										<label class="deploy-slot-label">Deployment Type:</label>
+									</td>
+									<td>
+										<label class="radio-inline deploy-slot-radio"><input type="radio" name="server-type" class="hypervisor" checked />Hypervisor</label>
+										<label class="radio-inline deploy-slot-radio"><input type="radio" name="server-type" class="dedicated" />Dedicated Server</label>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-slot-label">Slot:</label>
+									</td>
+									<td>
+										<select class="chassis-slot-number form-control">
+											<option value="-1">Please select a Pool Slot</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr class="os-select-row no-display">
+									<td align="right">
+										<label class="deploy-slot-label">Select an OS:</label>
+									</td>
+									<td>
+										<select type="text" class="form-control slot-os-select">
+											<option value="-1">Please select an OS</option>
+										</select>
+									</td>
+								</tr>
+								<tr class="os-select-row no-display">
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										<label class="deploy-slot-label">Network Configuration:</label>
+									</td>
+									<td>
+										<input type="text" class="chassis-ip-address form-control" value="" placeholder="IP Address in: 10.0.0.0/8" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="right">
+										<button class="deploy-slot-to-system-btn btn btn-yes mt-lg" style="font-size:18px;" type="button">DEPLOY SLOT</button>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="vm-info modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">VM Info</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width vm-info-table" style="table-layout:fixed;">
+							  <tbody>
+								<tr>
+									<td align="right"><label class="vm-info-label">VM Name:</label></td>
+									<td><input type="text" class="vm-name form-control" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="vm-info-label">Backing Slot:</label></td>
+									<td><input type="text" class="slot-number form-control" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="vm-info-label">Auto-Start VM?:</label></td>
+									<td class="td-toggle-padd"><input class="vm-auto-start" type="checkbox" data-toggle="toggle" /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="vm-info-label">VM VNC Connection:</label></td>
+									<td><input type="text" class="vm-vnc-connection form-control" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="vm-info-label">VM IP:</label></td>
+									<td><input type="text" class="vm-ip-addr form-control" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="vm-info-label">VM MAC Address:</label></td>
+									<td><input type="text" class="vm-mac form-control" disabled /></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr>
+									<td style="vertical-align:top;" align="right"><label class="vm-info-label">VM Resources:</label></td>
+									<td>
+										<table class="vm-resources full-width">
+										  <tbody>
+										    <tr>
+												<td class="vm-resources-properties">CPUs:</td>
+												<td><input type="text" class="form-control vm-cpu-ct" disabled /></td>
+											</tr>
+											<tr>
+												<td class="vm-resources-properties">RAM:</td>
+												<td><input type="text" class="form-control vm-ram" disabled /></td>
+											</tr>
+											<tr>
+												<td class="vm-resources-properties">Storage:</td>
+												<td><input type="text" class="form-control vm-storage" disabled /></td>
+											</tr>
+										  </tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<hr/>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<table class="vm-info-btns" style="table-layout:fixed">
+										  <tbody>
+											<tr>
+												<td>
+													<div class="dropdown">
+														<button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Power Control<span class="caret"></span></button>
+														<ul class="dropdown-menu">
+														  <li><a href="#" class="power-btn" pwr-action="ON">Power On</a></li>
+														  <li><a href="#" class="power-btn" pwr-action="OFF">Shutdown</a></li>
+														  <li><a href="#" class="power-btn" pwr-action="HARDOFF">Hard Shutdown</a></li>
+														  <li><a href="#" class="power-btn" pwr-action="REBOOT">Reboot</a></li>
+														  <li><a href="#" class="power-btn" pwr-action="RESET">Reset</a></li>
+														</ul>
+													</div>
+												</td>
+												<td>
+													<div class="dropdown">
+														<button class="btn btn-block btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Backup<span class="caret"></span></button>
+														<ul class="dropdown-menu">
+														  <li><a href="#" class="backup-btn" backup-action="BACKUP">Backup</a></li>
+														  <!--<li><a href="#" class="snapshot-btn" snapshot-action="SNAPSHOT">Snapshot</a></li>
+														  <li><a href="#" class="snapshot-btn" snapshot-action="RESTORE">Restore</a></li>-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<div class="dropdown">
+														<button class="btn btn-block btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Miscellaneous<span class="caret"></span></button>
+														<ul class="dropdown-menu">
+														 <!-- <li><a href="#">Clone</a></li>
+														  <li><a href="#">Migrate</a></li> -->
+														  <li><a href="#" class="power-btn" pwr-action="DELETE">Delete</a></li>
+														</ul>
+													</div>
+												</td>
+											</tr>
+										  </tbody>
+										</table>
+									
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="romwareplus-info modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">ROMwarePlus</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 h3 romwareplus-info-content">
+							ROMwarePlus Version: Big Kiwi - V0.3<BR />
+							Authors: Dan Gallic, Rob Roche
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				&copy; 2017 Arnouse Digital Devices, Corp.
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pool modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Create a Pool</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 h3">
+							<input type="text" class="form-control pool-name" placeholder="Pool Name"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="" class="add-pool-btn" data-toggle="modal">CREATE</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="chassis modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Add a Chassis</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<h3 class="warning-sign">Not Yet Implemented</h3>
+<!-- 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="h3 mt-none">Chassis Type:</div>
+							<select class="form-control chassis-type mb-lg">
+								<option value="sr60" selected>SR-60</option>
+							</select>
+							<input type="text" class="form-control chassis-name mb-lg" placeholder="Chassis Name"/>
+							<input type="text" class="form-control chassis-ip" placeholder="Chassis IP Address"/>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-no" data-dismiss="modal">CANCEL</button>
+<!-- 				<button type="button" class="btn btn-primary add-chassis-btn">ADD</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="pool-error modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h2 class="modal-title">Pool Error</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="full-width"> 
+								<h2>The BioDigitalPC<sup>&reg;</sup> in Chassis: <span class="chassis-name"></span>, Slot <span class="slot-number"></span> is <span class="error-msg"></span></h2>
+								<h3>To Resolve this error please:</h3>
+								<div class="error-resolution h4">
+									<div class="full-width text-center">
+										<button type="button" class="btn btn-lg remove-slot-from-pool">Remove the Slot from the Pool</button>
+									</div>
+									<h3 class="text-center">-- or -- </h3>
+									<div class="full-width text-center">
+										<button type="button" class="btn btn-lg turn-slot-on">Turn the BioDigitalPC<sup>&reg;</sup> On</button>
+										<div class="insert-card-into-slot mt-sm">Insert a BioDigitalPC<sup>&reg;</sup>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-lg btn-warning card-inserted-btn">BioDigitalPC<sup>&reg;</sup> Inserted</button></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="chassis-picker modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Assets</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width h2">
+							  <tbody>
+								<tr>
+									<td align="right"><label class="modify-pool-label">Pool Name:</label></td>
+									<td class="pool-name edit-pool-name"></td>
+								</tr>
+								<tr>
+									<td class="pb-lg" align="right"><label class="modify-pool-label">Slots in Pool: </label></td>
+									<td class="pool-slots pb-lg edit-pool-slots"></td>
+								</tr>
+							  </tbody>
+							</table>
+							<select class="form-control chassis-name-select">
+								<option value="-1">SELECT A CHASSIS</option>
+							</select>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-yes done-pool-btn">DONE</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="slot-picker modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title">Edit Assets</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="sr60-picker">
+								<div class="sr60-row row">
+									<!-- Module 1 -->
+									{{ sr10(1) }}
+									<!-- Module 2 -->
+									{{ sr10(2) }}
+									<!-- Module 3 -->
+									{{ sr10(3) }}
+									<!-- Module 4 -->
+									{{ sr10(4) }}
+									<!-- Module 5 -->
+									{{ sr10(5) }}
+									<!-- Module 6 -->
+									{{ sr10(6) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-offset-4 col-xs-4 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+							<div class="sr10-picker no-display">
+								<div class="sr10-container" addc-sr10-idx="0">
+									<div class="slot-row">
+										<div class="slot" slot-num="1" sr10-idx="0">1</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="2" sr10-idx="0">2</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="3" sr10-idx="0">3</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="4" sr10-idx="0">4</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="5" sr10-idx="0">5</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="6" sr10-idx="0">6</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="7" sr10-idx="0">7</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="8" sr10-idx="0">8</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="9" sr10-idx="0">9</div>
+									</div>
+									<div class="slot-row">
+										<div class="slot" slot-num="10" sr10-idx="0">10</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-no cancel-btn">CANCEL</button>
+				<button type="button" class="btn btn-yes done-btn">DONE</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="dedicated-server-info modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content server-info-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Server Info</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width fixed server-info-table">
+							  <tbody>
+								<tr>
+									<td align="right"><label class="server-info-label">Slot Name:</label></td>
+									<td><input type="text" class="slot-name form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="server-info-label">Chassis Name:</label></td>
+									<td><input type="text" class="chassis-name form-control mb-md"disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="server-info-label">Slot Number:</label></td>
+									<td><input type="text" class="slot-number form-control mb-md"disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="server-info-label">Slot OS:</label></td>
+									<td><input type="text" class="slot-os form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="server-info-label">Slot IP:</label></td>
+									<td><input type="text" class="slot-ip form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="server-info-label">Slot MAC:</label></td>
+									<td><input type="text" class="slot-mac form-control mb-md" disabled /></td>
+								</tr>
+							  </tbody>
+							</table>
+							<table class="full-width power-buttons fixed">
+							  <tbody>
+							  	<tr>
+							  		<td colspan="3">
+							  			<button type="button" class="btn btn-block undeploy" action-type="7">UNDEPLOY SLOT</button>
+							  		</td>
+							  	</tr>
+
+								<tr>
+									<td colspan="3">
+										<button type="button" class="btn btn-block kvm" action-type="0">ENABLE KVM</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-block on" action-type="1">POWER ON</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block off" action-type="2">SOFT POWER OFF</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block reset" action-type="6">RESET</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-block hard-off" action-type="3">HARD POWER OFF</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block hard-reboot" action-type="5">HARD REBOOT</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block reboot" action-type="4">SOFT REBOOT</button>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="deploying-hypervisor-info modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Deploy Information</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width fixed">
+							  <tbody>
+								<tr>
+									<td><label>Slot Name</label></td>
+									<td><input type="text" class="slot-name form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td><label>Slot Number</label></td>
+									<td><input type="text" class="slot-number form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td><label>Slot OS</label></td>
+									<td><input type="text" class="slot-os form-control mb-md" disabled /></td>
+								</tr>
+								<tr>
+									<td><label>Slot IP</label></td>
+									<td><input type="text" class="slot-ip form-control mb-md" disabled /></td>
+								</tr>
+							  </tbody>
+							</table>
+							<table class="full-width power-buttons fixed">
+							  <tbody>
+								<tr>
+									<td colspan="3">
+										<button type="button" class="btn btn-block kvm">ENABLE KVM</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-block on">POWER ON</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block off">SOFT POWER OFF</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block reset">RESET</button>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" class="btn btn-block hard-off">HARD POWER OFF</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block hard-reboot">HARD REBOOT</button>
+									</td>
+									<td>
+										<button type="button" class="btn btn-block reboot">SOFT REBOOT</button>
+									</td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="chassis-info modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 class="modal-title">Chassis Information</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<table class="full-width fixed chassis-info-table">
+							  <tbody>
+								<tr>
+									<td align="right"><label class="chassis-info-label">Chassis Name:</label></td>
+									<td><input type="text" class="chassis-name form-control mb-md disabled" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="chassis-info-label">Chassis Type:</label></td>
+									<td><input type="text" class="chassis-type form-control mb-md disabled" disabled /></td>
+								</tr>
+								<tr>
+									<td align="right"><label class="chassis-info-label">Chassis IP:</label></td>
+									<td><input type="text" class="chassis-ip form-control mb-md disabled" disabled /></td>
+								</tr>
+								<tr>
+									<td><label class="chassis-info-label">ROMware Link:</label></td>
+									<td class="romware-link-td"><a href="#" class="romware-link btn btn-block btn-primary" target="_blank">Open ROMware in a New Tab</a></td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 			<div class="modal-footer">
+				<a href="" class="romware-cancel-btn" data-dismiss="modal">CANCEL</a>
+			</div> -->
+		</div>
+	</div>
+</div>
+
+
+
+<div class="add-os modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title">Add an Operating System</h2>
+			</div>
+			<form method="post" enctype="multipart/form-data" id="osUploadForm">
+				<div class="modal-body">
+				  <div class="container">
+					  <div class="row">
+					    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="font-size: 20px">
+							
+							  <div class="form-group">
+								<label for="os-name" class="add-os-label">Name</label>
+								<input class="form-control" id="os-name" placeholder="Ubuntu16" name="os-name">
+							  </div>
+							  <div class="form-group">
+								<label for="vmlinuz-upload" class="add-os-label">VMLinuz File</label>
+								<input type="file" class="form-control-file add-os-form-input" id="vmlinuz-upload" name="vmlinuz">
+							  </div><hr>
+							  <div class="form-group">
+								<label for="initrd-upload" class="add-os-label">Initrd img File</label>
+								<input type="file" class="form-control-file add-os-form-input" id="initrd-upload" name="initrd">
+							  </div><hr>
+							  <div class="form-check">
+								<input type="checkbox" class="form-check-input" id="ks-check" checked name="ks-check">
+								<label class="form-check-label add-os-label" for="ks-check">Upload Kickstart</label>
+							  </div><hr>
+							  <div class="form-group ks-upload-group">
+								<label for="ks-upload" class="add-os-label">Kickstart File</label>
+								<input type="file" class="form-control-file add-os-form-input" id="ks-upload" name="ks-file">
+							  </div>
+							  <div class="form-group nfs-path-group" hidden>
+								<label for="nfs-path" class="add-os-label">NFS Path URL</label>
+								<input type="text" class="form-control" id="nfs-path" name="nfs-path">
+							  </div>
+							  <!-- <button type="submit" class="btn btn-yes submit-os-upload">Submit</button> -->
+						</div>
+					  </div>
+				  </div>
+					<!--<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="full-width fixed">
+								  <tbody>
+									<tr>
+										<td align="right"><label class="add-os-label">OS Package:</label></td>
+										<td>
+											<select type="text" class="os-package-select form-control mb-md">
+												<option value="-1">Select a Package</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<hr />
+										</td>
+									</tr>
+									<tr>
+										<td align="right"><label class="add-os-label">OS Name:</label></td>
+										<td><input type="text" class="os-name form-control mb-md" placeholder="OS Name" /></td>
+									</tr>
+									<tr>
+										<td align="right"><label class="add-os-label">ISO File:</label></td>
+										<td>
+											<select class="os-iso-select form-control mb-md">
+												<option value="-1">Select an ISO File</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td align="right"><label class="add-os-label">Needs Driver ISO?:</label></td>
+										<td><input class="os-needs-driver" type="checkbox" data-toggle="toggle" /></td>
+									</tr>
+								  </tbody>
+								</table>
+							</div>
+						</div>
+					</div>-->
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-yes submit-os-upload">Submit</button>
+				</div>
+			</form>
+<!-- 			<div class="modal-footer">
+				<button type="button" class="btn btn-yes add-os-btn">ADD</button>
+				<button type="button" class="btn btn-no cancel-add-os-btn">CANCEL</button>
+			</div> -->
+		</div>
+	</div>
+</div>
+<div class="loading modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h2 class="modal-title">Please Wait...</h2>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
+							<img src="/imgs/Loading_Icon.gif" class="img-responsive" />
+						</div>
+						<h3 class="message"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="are-you-sure modal fade sr60-modal" tabindex="-1" role="dialog" aria-labelledby="sureModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title" id="sureModalLabel">Are you sure?</h1>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete this Pool?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-yes">YES</button>
+				<button type="button" class="btn btn-no" data-dismiss="modal">NO</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="alert-box modal fade in sr60-modal" tabindex="-1" role="dialog" aria-labelledby="alertBoxLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title" id="alertBoxLabel"></h1>
+			</div>
+			<div class="modal-body">
+				<div class="message-container">
+					<div class="message-icon-container">
+						<i class="message-icon fa fa-3x"></i>
+					</div>
+					<div class="message-text-container h4">
+						<div class="message-text"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-yes" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- <script src="/js/jquery.min.js"></script> -->
+<!-- <script src="/js/bootstrap.min.js"></script> -->
+<!-- <script src="/js/bootstrap-toggle.min.js"></script> -->
+<!-- <script src="/js/bootstrap-notify.min.js"></script> -->
+<!-- <script src="/js/jquery-ui.min.js"></script> -->
+<!-- <script src="/js/sr60.js"></script> -->
+<!-- <script src="/js/blob7.js"></script> -->
+<!-- <script src="/js/blob.js"></script> -->
+
+</body>
+</html>
+

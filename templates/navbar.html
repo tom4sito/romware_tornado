@@ -1,0 +1,28 @@
+<!-- <?php 
+$doc_root = realpath("http://".$_SERVER["DOCUMENT_ROOT"]);
+?> -->
+<div class="sidenav">
+  <div class="addc-logo-container">
+  	<a  href="#"><img src="static/imgs/addc-logo.png" id="addc-logo-img"></a>
+  </div>
+  <a href="#" class="home-btn"><span class="home-btn fa fa-home icon-pad"></span> Dashboard</a>
+</div>
+
+<div class="top-bar row">
+	<table>
+		<tr>
+			<td class="rwp-td">
+				<h1><span class="romwareplus-title">ROMware</span>Plus</h1>
+			</td>
+			<!-- <?php if( isset($_SESSION['username']) ): ?> -->
+			<td class="logout-td"><a href="../logout/"><h2>LOGOUT <span class="fa fa-sign-out"></span></h2></a></td>
+			<!-- <?php endif; ?> -->
+			<!-- <?php if( !isset($_SESSION['username']) ): ?> -->
+			<td class="logout-td"><a href="../login/"><h2>LOGIN <span class="fa fa-sign-in"></span></h2></a></td>
+			<!-- <?php endif; ?> -->
+		</tr>
+	</table>
+	<!-- <h1><span class="romwareplus-title">ROMware</span>Plus  -->
+		<!-- <span class="romwareplus-info-btn glyphicon glyphicon-info-sign"></span> -->
+	<!-- </h1> -->
+</div>

@@ -1,0 +1,1068 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	width: 1540px;
+	background-color: #EEEEEE;
+}
+
+.no-display{
+	display:none;
+}
+
+.warning-sign{
+	color: #FFA71E;
+}
+
+.romwareplus-title {
+	color: #FFA71E;
+}
+
+.romwareplus-info {
+	color: #ffffff;
+}
+
+.romwareplus-info-content {
+	font-size: 20px;
+	font-weight: 300px;
+}
+
+.romwareplus-info .modal-footer {
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.sidenav {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #007765;
+    overflow-x: hidden;
+    padding-top: 0px;
+}
+
+.addc-logo-container {
+	padding-bottom: 40px;
+}
+
+#addc-logo-img {
+	width: 220px;
+	height: 80px;
+}
+
+.icon-pad {
+	padding-right: 0px;
+	font-size: 50px;
+}
+.sidenav a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: 100;
+	color: #ffffff;
+	display: block;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.main {
+	margin-left: 260px; /* Same as the width of the sidenav */
+	font-size: 28px; /* Increased text to enable scrolling */
+}
+
+.top-bar {
+	height: 80px;
+	color: #007765;
+	background-color: #ffffff;
+	padding: 0px 30px;
+	border-bottom-style: solid;
+	margin-left: 260px;
+}
+
+.top-bar > h1 {
+	font-weight: 900;
+	margin-top: 0px;
+}
+
+.romwareplus-info-btn {
+	padding-left: 20px;
+	cursor:pointer;
+	font-size: 30px;
+}
+
+/*romewareplus title td width*/
+.rwp-td {
+	width: 86.7%;
+}
+
+/*romewareplus title font weight*/
+.rwp-td > h1 {
+	font-weight: 900;
+}
+
+.logout-td > a {
+	color: #007765;
+}
+
+.logout-td > a:hover {
+	text-decoration: none;
+}
+
+
+/* MODALS STYLES ------*/
+.modal .container{
+	width:100%;
+}
+
+.modal-body {
+	padding-bottom: 30px;
+}
+
+
+/* OVERVIEW CSS ---------------------*/
+.page-title {
+	padding: 30px 30px 4px 30px;
+	font-size: 40px;
+	font-weight: 100;
+}
+
+.resources-wrapper {
+	/*margin-top: 30px;*/
+	padding-left: 36px;
+}
+
+.cols-base {
+	margin: 10px;
+	width:400px;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #CCCCCC;
+	background-color: #ffffff;
+	padding: 10px 20px;
+}
+
+.pool-box, .chassis-box {
+	width: 120px;
+	margin: 4px;
+	color: #ffffff;
+	background-color: #007765;
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	padding: 4px 6px 4px 8px;
+	cursor: pointer;
+
+}
+
+.pools-header, .chassis-header, .history-header {
+	color: #007765;
+	font-weight: 900;
+}
+
+.add-pool-btn, .add-chassis-btn {
+	padding: 2px 6px 2px 30px;
+}
+
+.pool-view-add-pool, .pool-view-add-chassis {
+	color: #007765;
+	padding-left: 5px;
+}
+
+.pool-view-add-pool:hover, .pool-view-add-chassis:hover {
+	color: #FFA71E;
+}
+
+.pool-box .name {
+	font-size: 16px;
+	padding-bottom: 8px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.deployed-count-box, .slot-count-box, .error-count-box {
+	font-weight: 400;
+	font-size: 12px;
+	margin-bottom: 5px;
+	line-height: 11px;
+}
+
+.chassis-row {
+	font-size: 16px;
+}
+
+.chassis-box .name {
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.chassis-number {
+	padding-right: 6px;
+	text-align: center;
+	font-size: 36px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
+
+/* CREATE POOL MODAL -------------------------*/
+
+.modal-content {
+	background-color: #007765;
+}
+
+.modal-title {
+	color: #ffffff;
+}
+
+.form-control.pool-name {
+	width: 540px;
+}
+
+.add-pool-btn, .add-chassis-btn {
+	font-size: 24px;
+	color: #ffffff;
+	padding-right: 5px;
+}
+
+.add-pool-btn:hover, .romware-cancel-btn:hover {
+	font-size: 24px;
+	color:#FFA71E;
+	/*font-weight: 900;*/
+	text-decoration: none;
+}
+
+.close {
+	color: #ffffff;
+	opacity: .9;
+}
+
+/* CHASSIS INFO MODAL ------------------------------*/
+
+.chassis-info-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 100;
+	padding-right: 4px;
+}
+
+.chassis-name.form-control, 
+.chassis-type.form-control, 
+.chassis-ip.form-control  {
+	color: #ffffff;
+	background-color: #007765;
+	border-style: none;
+	webkit-box-shadow: none;
+	box-shadow: none;
+	padding-top: 14px;
+}
+
+.romware-link-td {
+	padding-left: 10px;
+}
+
+.romware-link.btn-primary {
+	background-color: #FFA71E;
+	border-color: #FFA71E;
+	color: #000000;
+	font-weight: 700;
+}
+
+.romware-link.btn-primary:hover {
+	background-color: #ffb71e;
+	border-color: #FFA71E;
+	color: #000000;
+	font-weight: 700;
+}
+
+.romware-link-td > a {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+
+/* one pool view --------------------------------------------------*/
+
+#one-pool-view {
+	/*width: 1250px;*/
+	/*background-color: lavender;*/
+	margin: 10px 30px;
+/*	border-style: solid;
+	border-width: 1px;*/
+}
+
+
+.back-btn {
+	margin: 10px 226px 20px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.one-pool-view-back {
+	font-size: 30px;
+	font-weight: 300;
+	color: #007765
+}
+
+.one-pool-view-back:hover {
+	font-size: 30px;
+	font-weight: 300;
+	color: #FFA71E;
+	text-decoration: none;
+}
+
+.pool-edit-icons {
+	font-size: 14px;
+	padding: 8px 2px 4px 4px;
+	width: 76px;
+	margin: 4px;
+	border-radius: 5px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.one-pool-view-add-os, 
+.one-pool-view-add-slots,
+.delete-pool {
+	color: #ffffff;
+}
+
+.one-pool-view-add-os:hover, 
+.one-pool-view-add-slots:hover,
+.delete-pool:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+/*.pool-edit-icons a {
+	color: #ffffff;
+}
+
+.pool-edit-icons a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}*/
+
+.edit-trash {
+	background-color: #bb0e0e;
+}
+
+.edit-os {
+	background-color: #0e83bb;
+}
+
+.edit-asset {
+	background-color: #007765;
+}
+
+.edit-icon {
+	font-size: 22px;
+}
+
+.pool-info {
+	margin: 4px;
+	margin-bottom: 10px;
+}
+
+.no-display {
+	display: none;
+}
+
+.pool-stats, .hypervisor-stats {
+	width: 290px;
+	height: 194px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #ffffff;
+    /*padding-bottom: 10px;*/
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+.hypervisor-stats {
+    margin-left: 14px;
+    position: absolute;
+    left: 305px;
+}
+
+.pool-info-headers {
+	color: #007765;
+}
+
+.boxes-containers {
+	margin-left: 3px;
+}
+
+.hypervisors-panel,
+.dedicated-panel,
+.unallocated-panel {
+	width: 596px;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: #CCCCCC;
+	background-color: #ffffff;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	padding-right: 0px;
+}
+
+.boxes-titles {
+	color: #007765;
+}
+
+.boxes-titles:hover, .boxes-titles:focus {
+	color: #FFA71E;
+	text-decoration: none;
+}
+
+.add-vm-to-pool {
+	background-color: #ffffff;
+	color: #007765;
+    margin-left: 5px; 
+    margin-bottom: 3px; 
+    border-color: #007765;
+}
+
+.add-vm-to-pool:hover {
+	color: #FFA71E;
+	margin-left: 5px;
+	margin-bottom: 3px;
+	border-color: #FFA71E;
+}
+
+.hyper-arrow-down-btn {
+    position: relative;
+    top: 6px;
+    color: #007765;
+    padding: 0px 0px 0px 218px;
+}
+
+.hyper-arrow-down-btn:hover {
+    position: relative;
+    top: 6px;
+    color: #FFA71E;
+    padding: 0px 0px 0px 218px;
+}
+
+.dedicated-arrow-down-btn {
+    position: relative;
+    top: 6px;
+    color: #007765;
+    padding: 0px 0px 0px 240px;
+}
+
+.dedicated-arrow-down-btn:hover {
+    position: relative;
+    top: 6px;
+    color: #FFA71E;
+    padding: 0px 0px 0px 240px;
+}
+
+.new-hypervisor-box {
+	width: 180px;
+	height: 124px;
+	background-color: #F5F5F5;
+	margin-bottom: 8px;
+	margin-right: 14px;
+	border-radius: 6px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #0EBB93;
+}
+
+.new-dedicated-box, .new-unallocated-box {
+	color: #007765;
+    width: 178px;
+    height: 120px;
+    background-color: #F5F5F5;
+    margin-bottom: 12px;
+    margin-right: 14px;
+    border-radius: 6px;
+/*    border-style: solid;
+    border-width: 1px;
+    border-color: #0EBB93;*/
+    padding-left: 60px;
+    padding-top: 40px;
+}
+
+.unallocated-servers {
+    margin-top: 14px;
+}
+
+.hypervisors {
+	padding-left: 15px;
+	margin-top: 14px;
+}
+
+.new-vm-box {
+	width: 36px;
+    background-color: #ffffff;
+    margin: 3px;
+    font-size: 20px;
+    border-radius: 4px;
+    padding: 0px 0px 0px 10px;
+    cursor: pointer;
+}
+
+.link-status{
+	position:absolute;
+	top:4px;
+	right:4px;
+	text-align:right;
+}
+
+.vm-row {
+	padding-left: 4px;
+}
+
+
+/* ---- Deploy VM Modal ---------------------*/
+
+.deploy-vm-info-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 100;
+	padding-right: 26px;
+}
+
+.deploy-vm-radio {
+	font-size: 18px;
+	color: #ffffff;
+}
+
+
+.deploy-vm-system-btn {
+	color: #000000;
+	font-size: 18px;
+	margin-top: 20px;
+	background-color: #ffa71e;
+	border-color: #ffa71e;
+	font-weight: 700;
+}
+
+.deploy-vm-system-btn:hover {
+	color: #000000;
+	font-size: 18px;
+	margin-top: 20px;
+	background-color: #ffb71e;
+	border-color: #ffa71e;
+}
+
+.are-you-sure {
+	color: #ffffff;
+	font-weight: 300;
+}
+
+.btn-yes, .btn-no {
+	color: #ffffff;
+	background-color: #007765;
+	border-color: #ffffff;
+}
+
+.btn-yes:hover, .btn-no:hover {
+	color: #ffa71e;
+	background-color: #007765;
+	border-color: #ffa71e;
+}
+
+
+/* ---- Add OS Modal ---------------------*/
+
+.add-os-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 300;
+	padding-right: 36px;
+}
+
+.add-os-form-input{
+	color:#ffffff;
+	font-weight: 100;
+	font-size: 18px;
+}
+
+#osUploadForm hr {
+	margin-bottom: 5px;
+	margin-top: 20px;
+}
+
+/* Edit Assets Modal --------------*/
+.modify-pool-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 100;
+	padding-right: 10px;
+}
+
+.edit-pool-name, .edit-pool-slots {
+	color: #ffffff;
+	font-size: 18px;
+	padding-top: 7px;
+}
+
+/*  DEPLOY A SLOT MODAL --------------*/
+
+.deploy-modal-width {
+	width: 500px;
+}
+
+.deploy-slot-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 300;
+	padding-right: 20px;
+}
+
+.deploy-slot-radio {
+	font-size: 14px;
+	font-weight: 500;
+	color: #ffffff;
+}
+
+/*---------------------- Slot Picker CSS*/
+
+.sr60-picker {
+	text-align:center;
+	width:100%;
+	position:relative;
+}
+
+.slot-picker .modal-content{
+	width: 1060px;
+	background-color: #ffffff;
+}
+
+.slot-picker .modal-dialog {
+	margin-left: 80px;
+	width: 1060px;
+}
+
+.slot-picker .modal-header {
+    border-bottom: 1px solid #007765;
+}
+
+.slot-picker .modal-footer {
+    border-top: 1px solid #007765;
+}
+
+.slot-picker .modal-title {
+	color: #007765;
+}
+
+.sr10-picker {
+	text-align:center;
+	width:100%;
+	position:relative;
+}
+
+
+.sr10-picker .sr10-container {
+	border:1px solid #808080;
+	position:relative;
+	float:left;
+	margin:10px;
+	width:100%;
+}
+
+.sr10-picker .slot-row{
+	width:100%;
+}
+
+
+.sr60-row{
+	position:relative;
+	float:left;
+	clear:both;
+	width:1060px;
+}
+.sr10-container{
+	position:relative;
+	float:left;
+	width:170px;
+}
+
+.sr10-inner-container{
+	/*margin:10px;*/
+	margin-left: 20px;
+	position:relative;
+	border:1px solid #007765;
+	border-radius: 10px;
+}
+
+.sr10-module-name{
+	margin:4px;
+	color: #007765;
+	font-weight: 300;
+
+}
+
+.sr60-picker .slot {
+    border: 1px solid #CCCCCC;
+    background-color: #CCCCCC;
+    padding: 3px 10px;
+    margin: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    color: #007765;
+    border-radius: 2px;
+}
+
+.slot.not-present{
+	background-color:#FFF;
+	color:#007765;
+}
+.slot.selected{
+	background-color:#007765;
+	border-color:#007765;
+	color:#FFF;
+}
+.slot.unavailable{
+	background-color:#155179;
+	border-color:#155179;
+	color:#FFF;
+}
+.slot.in-use{
+	background-color:#6BC7BA;
+	border-color:#6BC7BA;
+	color:#FFF;
+}
+
+.modal-footer {
+    border-top: 1px solid #ffffff;
+}
+
+.slot-picker .modal-footer .btn-no, .slot-picker .modal-footer .btn-yes {
+    background-color: #ffffff;
+    border-color: #007765;
+    color: #007765;
+}
+
+.slot-picker .modal-footer .btn-no:hover, .slot-picker .modal-footer .btn-yes:hover {
+    background-color: #ffffff;
+    border-color: #FFA71E;
+    color: #FFA71E;
+}
+
+/*---- Alert-box------------------------*/
+
+.alert-box .message-container {
+	padding:0px 0px 20px 0px;
+}
+.alert-box .message-container .message-text-container,
+.alert-box .message-container .message-icon-container {
+	display:table-cell;
+	vertical-align:middle;
+}
+.alert-box .message-container .message-icon-container {
+	padding-right:20px;
+}
+.alert-box .message-container .message-icon.success,
+.alert-box .message-container .message-text.success {
+	color:#3bf5ca;
+}
+.alert-box .message-container .message-icon.danger,
+.alert-box .message-container .message-text.danger {
+	color:#ffa341;
+}
+
+.message-text {
+	font-size: 24px;
+}
+
+
+/*--STATUSES --------------------------*/
+
+.installing{
+	border:3px solid #40b4f5;
+}
+.deploying{
+	border:2px solid orange;
+}
+.deployed{
+	border:2px solid #000;
+}
+.not-present{
+	background-color:white;
+	color:#000;
+}
+.off{
+	background-color:#BCBEC0;
+	color:#FFF;
+}
+.on{
+	background-color:#007765;
+	color:#FFF;
+}
+
+/*-----SERVER INFO---------------------*/
+
+.power-buttons {
+	margin-top: 24px;
+}
+
+.server-info-content {
+	width: 480px;
+}
+
+.server-info-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 300;
+	padding-right: 10px;
+}
+
+.server-info-table .form-control {
+	width: 300px;
+	color: #ffffff;
+	background-color: #007765;
+	border-style: none;
+	padding-top: 15px;
+	webkit-box-shadow: none;
+	box-shadow: none;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.power-buttons > tbody > tr > td {
+	padding: 3px;
+}
+
+table.power-buttons .btn {
+    border-color: #ffffff;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.dedicated-server-info table.power-buttons button.on,
+.deploying-hypervisor-info table.power-buttons button.on{
+	background-color:#85C18B;
+	color:#FFF;
+}
+.dedicated-server-info table.power-buttons button.off,
+.deploying-hypervisor-info table.power-buttons button.off{
+	background-color:#BCBEC0;
+	color:#FFF;
+}
+.dedicated-server-info table.power-buttons button.hard-off,
+.deploying-hypervisor-info table.power-buttons button.hard-off{
+	background-color:#6BC7BA;
+	color:#FFF;
+}
+.dedicated-server-info table.power-buttons button.reboot,
+.deploying-hypervisor-info table.power-buttons button.reboot{
+	background-color:#668999;
+	color:#FFF;
+}
+.dedicated-server-info table.power-buttons button.hard-reboot,
+.deploying-hypervisor-info table.power-buttons button.hard-reboot{
+	background-color:#FBAB1A;
+	color:#FFF;
+}
+.dedicated-server-info table.power-buttons button.reset,
+.deploying-hypervisor-info table.power-buttons button.reset{
+	background-color:#F16750;
+	color:#FFF;
+}
+
+/*HISTORY CONTAINER -------------------------------*/
+.history-container {
+	width:300px;
+}
+
+.history-container-2 {
+	width: 300px;
+	position: relative;
+	top: 0px;
+	margin-left: 0px;
+	margin-top: 4px;
+}
+
+/*fixes modals pushing pool-stats and hypervisor stats*/
+.history-panel-container {
+	padding: 0px;
+	position: absolute;
+	left: 900px;
+}
+
+
+/*-------VM INFO--------------------------------------*/
+
+.vm-info-label {
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: 400;
+	padding-right: 20px;
+}
+
+.vm-info-table .form-control {
+    color: #ffffff;
+    background-color: #007765;
+    border-style: none;
+    padding-top: 15px;
+    webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: 300;
+}
+
+.td-toggle-padd {
+	padding-left: 12px;
+}
+
+.toggle.btn.btn-default.off {
+    margin-left: 0px;
+}
+
+.vm-resources-properties {
+	color: #ffffff;
+	font-size: 18px;
+	padding-right: 0px;
+	padding-top: 9px;
+}
+
+table.vm-resources.full-width {
+    margin-left: 10px;
+}
+
+.vm-info-btns td {
+	width: 160px;
+	padding: 0px 8px 0px 2px;
+}
+
+
+/*.modal-open[style] {
+padding-right: 0px !important;
+}
+
+.modal-open {
+padding-right: 0px !important;
+}
+
+.test.modal-open {
+    overflow: auto;
+ }*/
+
+
+/*LOGIN CSS ------------------------------------*/
+
+/*body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}*/
+
+/*.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+	background: #ffffff none repeat scroll 0 0;
+	border-radius: 2px;
+	margin: 60px 100px 30px 200px;
+	max-width: 38%;
+	padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.login-form  .btn.btn-primary {
+  background: #ffa71e none repeat scroll 0 0;
+  border-color: #ffa71e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; margin-bottom:30px;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}*/
+
+#main-login {
+	width: 1295px;
+	align-content: center;
+}
+
+.login-container {
+	/*width: 300px;*/
+	background-color: #ffffff;
+	width: 30%;
+	margin: 40px 0px 0px 300px;
+	padding: 30px 58px;
+	border-radius: 5px;
+	/*margin-left: 200px;*/
+	/*align-content: center;*/
+}
+
+.panel {
+	-webkit-box-shadow: none;
+	box-shadow: none; 
+}
+
+.panel > h2 {
+	font-size: 20px;
+	text-align: center;
+	color: #555;
+
+}
+
+.panel > p {
+	font-size: 14px;
+	text-align: center;
+	color: #777;
+}
+
+
+#Login .form-control {
+    height: 46px;
+}
+
+.login-form .btn.btn-primary {
+	width: 100%;
+	height: 46px;
+	background-color: #FFA71E;
+	border-color: #FFA71E;
+}
+
+#main-login .danger {
+	font-size: 14px;
+	color: #777;
+}
+
+#main-logout {
+	margin-left: 280px;
+}
+

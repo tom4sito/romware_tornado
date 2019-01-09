@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% macro hello(name, value='', type='text', size=20) -%}
+    <input type="{{ type }}" name="{{ name }}" value="{{
+        value|e }}" size="{{ size }}">
+{%- endmacro %}
+<html>
+<head>
+	<title>{{title}}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Arnouse Digital Devices, Corp." />
+	<meta name="description" content="Arnouse Digital Devices, Corp. -- ADDC ROMwarePlus">
+	<meta name="author" content="ADDC.net">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+<!-- 	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-toggle.min.css">
+	<link rel="stylesheet" href="/css/animate.min.css">
+	<link rel="stylesheet" href="/css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index7.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,900" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="main">
+		<ul>
+			{% for item in items %}
+				<li>
+					{{ escape(item)}}
+				</li>
+			{% end %}
+		</ul>
+
+
+	</div>
+
+</body>
+
+</html>
